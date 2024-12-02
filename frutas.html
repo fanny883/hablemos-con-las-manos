@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación: Números y Abecedario en Lengua de Señas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Estilo del menú */
+        .menu {
+            background-color: #2193b0;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .menu ul li {
+            display: inline-block;
+        }
+
+        .menu ul li a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .menu ul li a:hover {
+            background-color: #6dd5ed;
+        }
+
+        /* Estilo del contenido */
+        h1 {
+            color: white;
+            font-size: 3em;
+            margin-top: 100px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .question-container {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #2193b0;
+        }
+
+        .answer-container {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: 2px solid #2193b0;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2193b0;
+            color: white;
+            border: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6dd5ed;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .restart-button {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .restart-btn-incorrect {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <div class="menu">
+        <ul>
+            <li><a href="menu.html" onclick="activateLink(this)">INICIO</a></li>
+            <li><a href="personajes.html" onclick="activateLink(this)">NÚMEROS</a></li>
+            <li><a href="cap.html" onclick="activateLink(this)">ABECEDARIO</a></li>
+            <li><a href="frutas.html" onclick="activateLink(this)">PRUEBA DE APRENDIZAJE</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido de la página -->
+    <h1>Evaluación: Números y Abecedario en Lengua de Señas</h1>
+    <p>¿Sabes qué número o letra corresponde a esta seña? Responde correctamente y pasa al siguiente.</p>
+
+    <div class="question-container">
+        <div class="question">
+            <img id="seña-img" src="1.jpg" alt="Imagen de la seña">
+            <div class="answer-container">
+                <input type="text" id="user-answer" placeholder="Ingresa tu respuesta" />
+                <button onclick="checkAnswer()">Comprobar respuesta</button>
+            </div>
+        </div>
+        <div id="message" class="message"></div>
+        <div id="correct-count"></div>
+        <button id="restart-btn" class="restart-button" onclick="restartQuiz()">Reiniciar</button>
+        <button id="restart-btn-incorrect" class="restart-btn-incorrect" onclick="restartQuiz()">Reiniciar Evaluación</button>
+    </div>
+
+    <script>
+        // Lista de preguntas (señas de números y letras)
+        const questions = [
+            { type: "number", value: "1", image: "1.jpg" },
+            { type: "number", value: "2", image: "2.jpg" },
+            { type: "number", value: "3", image: "3.jpg" },
+            { type: "number", value: "4", image: "4.jpg" },
+            { type: "number", value: "5", image: "5.jpg" },
+            { type: "number", value: "6", image: "6.jpg" },
+            { type: "number", value: "7", image: "7.jpg" },
+            { type: "number", value: "8", image: "8.jpg" },
+            { type: "number", value: "9", image: "9.jpg" },
+            { type: "number", value: "10", image: "10.jpg" },
+            { type: "letter", value: "a", image: "a.jpg" },
+            { type: "letter", value: "b", image: "b.jpg" },
+            { type: "letter", value: "c", image: "c.jpg" },
+            { type: "letter", value: "d", image: "d.jpg" },
+            { type: "letter", value: "e", image: "e.jpg" },
+            { type: "letter", value: "f", image: "f.jpg" },
+            { type: "letter", value: "g", image: "g.jpg" },
+            { type: "letter", value: "h", image: "h.jpg" },
+            { type: "letter", value: "i", image: "i.jpg" },
+            { type: "letter", value: "j", image: "j.jpg" },
+            { type: "letter", value: "k", image: "k.jpg" },
+            { type: "letter", value: "l", image: "l.jpg" },
+            { type: "letter", value: "m", image: "m.jpg" },
+            { type: "letter", value: "n", image: "n.jpg" },
+            { type: "letter", value: "o", image: "o.jpg" },
+            { type: "letter", value: "p", image: "p.jpg" },
+            { type: "letter", value: "q", image: "q.jpg" },
+            { type: "letter", value: "r", image: "r.jpg" },
+            { type: "letter", value: "s", image: "s.jpg" },
+            { type: "letter", value: "t", image: "t.jpg" },
+            { type: "letter", value: "u", image: "u.jpg" },
+            { type: "letter", value: "v", image: "v.jpg" },
+            { type: "letter", value: "w", image: "w.jpg" },
+            { type: "letter", value: "x", image: "x.jpg" },
+            { type: "letter", value: "y", image: "y.jpg" },
+            { type: "letter", value: "z", image: "z.jpg" }
+        ];
+
+        let currentQuestionIndex = 0; // Inicia con la primera pregunta
+        let correctAnswers = 0; // Contador de respuestas correctas
+
+        function loadNextQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const question = questions[currentQuestionIndex];
+                // Cambia la imagen y limpia la respuesta anterior
+                document.getElementById("seña-img").src = question.image;
+                document.getElementById("user-answer").value = "";
+                document.getElementById("message").textContent = "";
+                document.getElementById("correct-count").textContent = "Respuestas correctas: " + correctAnswers;
+            } else {
+                // Evaluación terminada
+                document.getElementById("message").textContent = `¡Has completado la evaluación! Respuestas correctas: ${correctAnswers}`;
+                document.getElementById("restart-btn").style.display = "inline-block";
+            }
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById("user-answer").value.toLowerCase().trim();
+            const correctAnswer = questions[currentQuestionIndex].value;
+
+            if (userAnswer === correctAnswer) {
+                // Respuesta correcta
+                correctAnswers++;
+                document.getElementById("message").textContent = "¡Correcto! Pasemos a la siguiente.";
+                document.getElementById("message").style.color = "green";
+                currentQuestionIndex++;
+                setTimeout(loadNextQuestion, 1000); // Espera 1 segundo antes de cargar la siguiente pregunta
+            } else {
+                // Respuesta incorrecta
+                document.getElementById("message").textContent = "¡Incorrecto! La respuesta correcta era '" + correctAnswer + "'.";
+                document.getElementById("message").style.color = "red";
+                document.getElementById("restart-btn-incorrect").style.display = "inline-block";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            document.getElementById("restart-btn").style.display = "none";
+            document.getElementById("restart-btn-incorrect").style.display = "none";
+            loadNextQuestion();
+        }
+
+        // Inicia la evaluación
+        loadNextQuestion();
+
+        // Función para activar un enlace al hacer clic
+        function activateLink(link) {
+            const links = document.querySelectorAll('.menu ul li a');
+            links.forEach(l => l.style.fontWeight = 'normal');
+            link.style.fontWeight = 'bold';
+        }
+    </script>
+</body>
+</html>

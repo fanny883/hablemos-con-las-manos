@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números en Lenguaje de Señas</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Estilo del menú */
+        .menu {
+            background-color: #2193b0;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .menu ul li {
+            display: inline-block;
+        }
+
+        .menu ul li a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .menu ul li a:hover {
+            background-color: #6dd5ed;
+        }
+
+        /* Estilo del contenido */
+        h1 {
+            color: white;
+            font-size: 3em;
+            margin-top: 100px; /* Añadimos margen para no tapar el contenido con el menú */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .number-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+            margin-top: 30px;
+        }
+
+        .number-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .number-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #2193b0;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <div class="menu">
+        <ul>
+            <li><a href="menu.html" onclick="activateLink(this)">INICIO</a></li>
+            <li><a href="num.html" onclick="activateLink(this)">NÚMEROS</a></li>
+           
+            <li><a href="abc.html" onclick="activateLink(this)">ABECEDARIO</a></li>
+             <li><a href="evalu.html" onclick="activateLink(this)">PRUEBA DE APRENDIZAJE</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido de la página -->
+    <h1>Números en Lenguaje de Señas</h1>
+    
+    <div class="number-container">
+        <div class="number-item">
+            <h3>1</h3>
+            <img src="img/1.jpg" alt="Número 1 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>2</h3>
+            <img src="img/2.jpg" alt="Número 2 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>3</h3>
+            <img src="img/3.jpg" alt="Número 3 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>4</h3>
+            <img src="img/4.jpg" alt="Número 4 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>5</h3>
+            <img src="img/5.jpg" alt="Número 5 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>6</h3>
+            <img src="img/6.jpg" alt="Número 6 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>7</h3>
+            <img src="img/7.jpg" alt="Número 7 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>8</h3>
+            <img src="img/8.jpg" alt="Número 8 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>9</h3>
+            <img src="img/9.jpg" alt="Número 9 en Lengua de Señas">
+        </div>
+        <div class="number-item">
+            <h3>10</h3>
+            <img src="img/10.jpg" alt="Número 10 en Lengua de Señas">
+        </div>
+    </div>
+
+    <script>
+        // Función para activar un enlace al hacer clic
+        function activateLink(link) {
+            const links = document.querySelectorAll('.menu ul li a');
+            links.forEach(l => l.style.fontWeight = 'normal');  // Restablecer estilo de los enlaces
+            link.style.fontWeight = 'bold';  // Resaltar el enlace seleccionado
+        }
+    </script>
+</body>
+</html>

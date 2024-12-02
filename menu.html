@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HABLEMOS CON LAS MANOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .contenido-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 20px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            gap: 30px;
+        }
+
+        .texto {
+            flex: 2;
+        }
+
+        .texto h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .texto h2 {
+            color: #2980b9;
+            font-size: 1.8rem;
+            margin-top: 25px;
+            font-weight: 600;
+        }
+
+        .texto p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .imagen-container {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .imagen-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu {
+            background-color: #2980b9;
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu ul li {
+            display: inline-block;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            background-color: #2980b9;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu ul li a:hover, .menu ul li a.active {
+            background-color: #3498db;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .contenido-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .menu ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+
+            .texto h1 {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .texto p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu">
+    <ul>
+        <li><a href="#" onclick="activateLink(this)">INICIO</a></li>
+        <li><a href="num.html" onclick="activateLink(this)">NÚMEROS</a></li>
+        <li><a href="abc.html" onclick="activateLink(this)">ABECEDARIO</a></li>
+        <li><a href="evalu.html" onclick="activateLink(this)">PRUEBA DE APRENDIZAJE</a></li>
+    </ul>
+</div>
+
+<div class="contenido-container">
+    <div class="texto">
+        <h1>HABLEMOS CON LAS MANOS</h1>
+        <p>El reconocimiento de la importancia de incluir a las personas mudas y con discapacidad auditiva en nuestras comunidades es fundamental para fomentar la inclusión y la igualdad.</p>
+
+        <h2>¿QUÉ ES EL LENGUAJE DE SEÑAS?</h2>
+        <p>El lenguaje de señas es una forma de comunicación que utiliza movimientos de las manos, los brazos, el rostro y el cuerpo para transmitir ideas y conceptos. Su objetivo es facilitar la comunicación para las personas sordas o con discapacidad auditiva, permitiéndoles expresarse y comprenderse con las mismas oportunidades que las personas oyentes.</p>
+
+        <h2>¿SABÍAS QUÉ?</h2>
+        <p>El lenguaje de señas no fue inventado por una sola persona, sino que surgió de manera natural como una forma de comunicación entre personas sordas a lo largo de la historia. Se cree que las primeras formas de lenguaje de señas se desarrollaron en comunidades sordas en todo el mundo, y que cada comunidad desarrolló su propio lenguaje de señas basado en su cultura y costumbres.</p>
+        <p>Una de las primeras referencias escritas al lenguaje de señas se remonta al siglo V a.C., en la obra "Historia" de Herodoto, donde se menciona la existencia de un lenguaje de señas utilizado por una tribu de pescadores sordos en el río Nilo.</p>
+    </div>
+    <div class="imagen-container">
+        <img src="img/hjh.jpeg" alt="Imagen ilustrativa sobre lenguaje de señas">
+    </div>
+</div>
+
+<script>
+    function activateLink(link) {
+        const activeLink = document.querySelector('.menu ul li a.active');
+        if (activeLink) {
+            activeLink.classList.remove('active');
+        }
+        link.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

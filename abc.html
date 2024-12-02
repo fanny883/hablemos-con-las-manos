@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abecedario en Lengua de Señas</title>
+    <style>
+        /* Estilo global */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Estilo del menú */
+        .menu {
+            background-color: #2193b0;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .menu ul li {
+            display: inline-block;
+        }
+
+        .menu ul li a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .menu ul li a:hover {
+            background-color: #6dd5ed;
+        }
+
+        /* Estilo del contenido */
+        h1 {
+            color: white;
+            font-size: 3em;
+            margin-top: 100px; /* Añadimos margen para no tapar el contenido con el menú */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2em;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .letter-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+            margin-top: 30px;
+        }
+
+        .letter-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .letter-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 15px;
+            text-transform: lowercase; /* Convertir las letras a minúsculas */
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 3px solid #2193b0;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <div class="menu">
+        <ul>
+            <li><a href="menu.html" onclick="activateLink(this)">INICIO</a></li>
+            <li><a href="num.html" onclick="activateLink(this)">NÚMEROS</a></li>
+           
+            <li><a href="abc.html" onclick="activateLink(this)">ABECEDARIO</a></li>
+             <li><a href="evalu.html" onclick="activateLink(this)">PRUEBA DE APRENDIZAJE</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido de la página -->
+    <h1>Abecedario en Lenguaje de Señas</h1>
+    
+
+    <div class="letter-container">
+        <div class="letter-item">
+            <h3>a</h3>
+            <img src="img/a.jpg" alt="Letra a en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>b</h3>
+            <img src="img/b.jpg" alt="Letra b en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>c</h3>
+            <img src="img/c.jpg" alt="Letra c en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>d</h3>
+            <img src="img/d.jpg" alt="Letra d en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>e</h3>
+            <img src="img/e.jpg" alt="Letra e en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>f</h3>
+            <img src="img/f.jpg" alt="Letra f en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>g</h3>
+            <img src="img/g.jpg" alt="Letra g en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>h</h3>
+            <img src="img/h.jpg" alt="Letra h en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>i</h3>
+            <img src="img/i.jpg" alt="Letra i en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>j</h3>
+            <img src="img/j.jpg" alt="Letra j en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>k</h3>
+            <img src="img/k.jpg" alt="Letra k en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>l</h3>
+            <img src="img/L.jpg" alt="Letra l en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>m</h3>
+            <img src="img/m.jpg" alt="Letra m en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>n</h3>
+            <img src="img/n.jpg" alt="Letra n en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>o</h3>
+            <img src="img/o.jpg" alt="Letra o en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>p</h3>
+            <img src="img/p.jpg" alt="Letra p en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>q</h3>
+            <img src="img/q.jpg" alt="Letra q en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>r</h3>
+            <img src="img/r.jpg" alt="Letra r en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>s</h3>
+            <img src="img/s.jpg" alt="Letra s en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>t</h3>
+            <img src="img/t.jpg" alt="Letra t en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>u</h3>
+            <img src="img/u.jpg" alt="Letra u en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>v</h3>
+            <img src="img/v.jpg" alt="Letra v en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>w</h3>
+            <img src="img/w.jpg" alt="Letra w en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>x</h3>
+            <img src="img/x.jpg" alt="Letra x en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>y</h3>
+            <img src="img/y.jpg" alt="Letra y en Lengua de Señas">
+        </div>
+        <div class="letter-item">
+            <h3>z</h3>
+            <img src="img/z.jpg" alt="Letra z en Lengua de Señas">
+        </div>
+    </div>
+
+    <script>
+        // Función para activar un enlace al hacer clic
+        function activateLink(link) {
+            const links = document.querySelectorAll('.menu ul li a');
+            links.forEach(l => l.style.fontWeight = 'normal');  // Restablecer estilo de los enlaces
+            link.style.fontWeight = 'bold';  // Resaltar el enlace seleccionado
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <style>
+       
+        .contenedor-formulario {
+            background-color: #ffeaa7;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+       
+            display: grid;
+            gap: 10px;
+        }
+
+        .input-48,
+        .input-50 {
+            width: calc(50% - 5px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-50 {
+            width: 100%;
+        }
+
+       
+        .btn-enviar {
+            background-color: #ff6348;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-enviar:hover {
+            background-color: #e74c3c;
+        }
+
+        
+        .form_link {
+            text-align: center;
+        }
+
+        .form_link a {
+            color: #3f88c5;
+            text-decoration: none;
+        }
+
+        .form_link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function validar(form) {
+            var nombre, apellidos, correo, contraseña, telefono, expresion;
+            nombre = form.nombre.value.trim();
+            apellidos = form.apellidos.value.trim();
+            correo = form.correo.value.trim();
+            contraseña = form.contraseña.value.trim(); // Cambio de clave a contraseña
+            telefono = form.telefono.value.trim();
+
+            expresion = /\w+@\w+\.\w+/;
+
+            if (nombre === "" || apellidos === "" || correo === "" || contraseña === "" || telefono === "") {
+                alert("Todos los campos son obligatorios");
+                return false;
+            } else if (nombre.length > 30) {
+                alert("El nombre es muy largo (máximo 30 caracteres)");
+                return false;
+            } else if (apellidos.length > 50) {
+                alert("Los apellidos son muy largos (máximo 50 caracteres)");
+                return false;
+            } else if (!expresion.test(correo)) {
+                alert("El correo no es válido");
+                return false;
+            } else if (contraseña.length > 10) {
+                alert("La contraseña debe contener máximo 10 caracteres");
+                return false;
+            } else if (telefono.length > 10) {
+                alert("El teléfono no debe de contener más de 10 caracteres");
+                return false;
+            } else if (isNaN(telefono)) {
+                alert("El teléfono solo debe contener números");
+                return false;
+            }
+
+           
+            enviarDatos(nombre, apellidos, correo, contraseña, telefono);
+
+           
+            return true;
+        }
+
+        function enviarDatos(nombre, apellidos, correo, contraseña, telefono) {
+       
+            var xhr = new XMLHttpRequest();
+            
+            
+            var url = "usuario.php";
+            
+                        var params = "nombre=" + nombre + "&apellidos=" + apellidos + "&correo=" + correo + "&contraseña=" + contraseña + "&telefono=" + telefono;
+            
+            xhr.open("POST", url, true);
+
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+          
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                   
+                    console.log(xhr.responseText);
+                }
+            }
+
+            xhr.send(params);
+        }
+    </script>
+</head>
+<body>
+    <div class="contenedor-formulario">
+        <form onsubmit="return validar(this);">
+            <div class="contenedor-inputs">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" maxlength="30" class="input-50"><br>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" maxlength="50" class="input-50"><br>
+
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" class="input-50"><br>
+
+                <label for="contraseña">Contraseña:</label> <!-- Cambio de clave a contraseña -->
+                <input type="password" id="contraseña" name="contraseña" maxlength="10" class="input-50"><br>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" maxlength="10" class="input-50"><br>
+            </div>
+
+            <input type="submit" value="Enviar" class="btn-enviar">
+        </form>
+
+        </div>
+    </div>
+</body>
+</html>
